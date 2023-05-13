@@ -17,7 +17,7 @@ public class avgTable extends JPanel {
     ArrayList<domain.weeklywhigt> list = new ArrayList<>();
 
     public avgTable(){}
-    // showing a table filled with the week avrgers
+    // showing a table filled with the week averages
     public void showAvg(){
         list= database.weekly.getWeeklyData();
         data = new String [list.size()][2];

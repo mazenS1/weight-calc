@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import domain.weeklywhigt;
 public class weekly {
-    // connnecting to data base:
+    // connecting to data base:
     public static Connection connection() throws SQLException {
         return DriverManager.getConnection("jdbc:sqlite:whight.db");
     }
@@ -27,7 +27,7 @@ public class weekly {
            System.out.println(e.getMessage());
         }
     }
-    //geting the last week enterd in the database
+    //getting the last week entered in the database
     public static int getWeeks(){
         ArrayList<weeklywhigt> list = new ArrayList<>();
         int weeks[];

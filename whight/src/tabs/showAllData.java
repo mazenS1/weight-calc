@@ -2,7 +2,6 @@ package tabs;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
-
 import database.dalyData;
 import tables.allWhigthTable;
 import tables.avgTable;

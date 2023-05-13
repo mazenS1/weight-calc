@@ -9,9 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 import javax.swing.table.DefaultTableCellRenderer;
-
 public class allWhigthTable extends JPanel{
     JTable table;
     JPanel  p;
@@ -27,7 +25,7 @@ public class allWhigthTable extends JPanel{
     public void showAllDataTable(){
        
         //showing the table with all the weights
-        //initilize tabel:
+        //initialize table:
         list = database.dalyData.getDalyData();
         data = new String[list.size()][3];
         for (int i = 0; i < list.size(); i++) {
@@ -35,7 +33,6 @@ public class allWhigthTable extends JPanel{
             data[i][1] = ""+list.get(i).getWhight();
             data[i][2] = ""+list.get(i).getId();
         }
-
         setBounds(300, 300, 300,300);
         table = new JTable(data,header);
         table.setBounds(500,500,500,200);

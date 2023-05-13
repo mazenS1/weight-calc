@@ -20,8 +20,8 @@ public class mainScreen extends JFrame implements ActionListener {
         
     }
     public void showMian(){
-        //important stuff idk what to classfie them to
-        int day =dalyData.getttttday();
+        //important stuff idk what to classfile them to
+        int day =dalyData.knowingDay();
         if(day!=7){
             day++;
         }
@@ -29,7 +29,7 @@ public class mainScreen extends JFrame implements ActionListener {
             day=1;
         }
         //the frame
-        text = new JLabel("enter whight for day: "+day);
+        text = new JLabel("enter weight for day: "+day);
         in = new JTextField();
         send = new JButton("send");
         extre = new JButton("extra");
@@ -53,7 +53,7 @@ public class mainScreen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // sending the data enterd by the user to the data base via insertWhight() method in dalyData.java and calling the calculate method;
+        // sending the data entered by the user to the data base via insertWhight() method in dalyData.java and calling the calculate method;
         if(e.getSource()==send){
             new dalywhigt();
             database.dalyData.insertWhigt(Double.valueOf(in.getText()));

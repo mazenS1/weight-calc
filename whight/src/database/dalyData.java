@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 import domain.*;
 public class dalyData {
     // connnecting to data base:
@@ -20,7 +18,7 @@ public class dalyData {
             Connection c = connection();
             PreparedStatement p = c.prepareStatement("insert into whight (whight,day) values(?,?) ")
         ) {
-            int day = getttttday();
+            int day = knowingDay();
             if(day!=7){
                 day++;
             }
@@ -51,7 +49,6 @@ public class dalyData {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
         return list;
     }
     public static void calculateAvg() {
@@ -67,7 +64,6 @@ public class dalyData {
                 while (r.next()) {
                     list.add(new dalywhigt(r.getDouble("whight")));
                 }
-
             double[] caling = new double[7];
             for (int i = 0; i < caling.length; i++) {
                 caling[i] = list.get(i).getWhight();
@@ -88,22 +84,8 @@ public class dalyData {
         }
         System.out.println("nothere");
     }
-    // idk what this is suppose to do yet!
-    public static int knowingDay() {
-        int day = 0;
-        ArrayList<dalywhigt> data = getDalyData();
-        int size = data.size();
-        
-        if (size > 0 && data.get(size - 1).getDay() == 7) {
-            day = 7;
-            dalywhigt w = new dalywhigt();
-            w.setDay(1);
-        }
-        return day;
-    }
-    // i also dont know what iam going to do with this one yet
-    //but it is working unlike the one above it!
-    public static int  getttttday(){
+    // to know which day it is 
+    public static int  knowingDay(){
         ArrayList<Integer> list = new ArrayList<>();
         try (
             Connection c = connection();
