@@ -25,7 +25,6 @@ public class dalyData {
             else if (day==7) {
                 day=1;
             }
-            System.out.println("connected");
             p.setDouble(1, whight);
             p.setInt(2, day);
             p.execute();
@@ -35,7 +34,7 @@ public class dalyData {
             System.out.println(e.getMessage());
         }
     }
-    //gettign all the data in wight table
+    //getting all the data in wight table
     public static ArrayList<dalywhigt> getDalyData(){
         ArrayList<dalywhigt> list = new ArrayList<>();
         try (
@@ -80,9 +79,8 @@ public class dalyData {
             weekly.insertAvg(avgRonded, week);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("here for");
         }
-        System.out.println("nothere");
+        
     }
     // to know which day it is 
     public static int  knowingDay(){
@@ -98,8 +96,22 @@ public class dalyData {
         } catch (Exception e) {
            System.out.println(e.getMessage());
         }
-        System.out.println("here");
         return list.get(0);
+    }
+    //deletes the last entered value in whight table
+    public static void deletWeight() {
+        try (
+            Connection c = connection();
+            PreparedStatement p = c.prepareStatement("DELETE FROM whight WHERE id = (SELECT MAX(id) FROM whight) ")
+        ) {
+            int i = getDalyData().size();
+            if (i<=1) {
+                throw new Exception("cant delete after one ");
+            }
+            p.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 
