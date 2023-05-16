@@ -11,7 +11,7 @@ import domain.dalywhigt;
 import java.awt.event.*;
 public class mainScreen extends JFrame implements ActionListener {
     JFrame frame = new JFrame();
-    JButton send ,extre = new JButton();
+    JButton send ,extre, delete = new JButton();
     JTextField in = new JTextField();
     JLabel text = new JLabel("user id");
     JTabbedPane tab = new JTabbedPane();
@@ -33,14 +33,18 @@ public class mainScreen extends JFrame implements ActionListener {
         in = new JTextField();
         send = new JButton("send");
         extre = new JButton("extra");
+        delete = new JButton("delete last weight ");
         text.setBounds(40,95,250,35);
         in.setBounds(190,100,200,25);
+        delete.setBounds(125, 330, 200, 25);
         send.setBounds(125,200,100,25);
         extre.setBounds(125,250,100,25);
         send.addActionListener(this);
+        delete.addActionListener(this);
         extre.addActionListener(this);
 
         //adding to frame ;
+        frame.add(delete);
         frame.add(extre);
         frame.add(send);
         frame.add(text);
@@ -72,6 +76,10 @@ public class mainScreen extends JFrame implements ActionListener {
         System.out.println("cil");
          new tabs.showAllData().showAllDataScreen();
 
+      }
+      if (e.getSource()==delete) {
+        database.dalyData.deletWeight();
+        JOptionPane.showMessageDialog(null, "deleted successfully", "successfully", JOptionPane.INFORMATION_MESSAGE);
       }
     }
     
